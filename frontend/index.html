@@ -1,13 +1,24 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>API Test Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
 <body>
 
-<h1>API Test</h1>
+<h1>API Test Panel</h1>
 
-<button onclick="test()">API 호출</button>
+<div>
+  <button id="homeBtn">Home</button>
+  <button id="dbBtn">Test DB</button>
+  <button id="dataBtn">Get Data</button>
+</div>
 
-<div id="result"></div>
+<pre id="result">결과가 여기에 표시됩니다.</pre>
 
-<script src="script.js"></script>
+<script src="app.js"></script>
 
 </body>
 </html>

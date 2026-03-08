@@ -1,21 +1,38 @@
-async function test() {
-  try {
+const API = "https://settest.onrender.com"
 
-    const res = await fetch("https://settest.onrender.com/");
+const resultBox = document.getElementById("result")
 
-    if (!res.ok) {
-      throw new Error("API error");
+async function callAPI(path){
+
+  resultBox.innerText = "Loading..."
+
+  try{
+
+    const res = await fetch(API + path)
+
+    if(!res.ok){
+      throw new Error("status: " + res.status)
     }
 
-    const data = await res.json();
+    const data = await res.json()
 
-    document.getElementById("result").innerText =
-      JSON.stringify(data, null, 2);
+    resultBox.innerText =
+      JSON.stringify(data, null, 2)
 
-  } catch (error) {
+  }catch(err){
 
-    document.getElementById("result").innerText =
-      "API 요청 실패: " + error.message;
+    resultBox.innerText =
+      "요청 실패\n\n" + err
 
   }
+
 }
+
+document.getElementById("homeBtn")
+  .addEventListener("click", () => callAPI("/"))
+
+document.getElementById("dbBtn")
+  .addEventListener("click", () => callAPI("/db"))
+
+document.getElementById("dataBtn")
+  .addEventListener("click", () => callAPI("/data"))
